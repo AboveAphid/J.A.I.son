@@ -3,7 +3,7 @@ Discord Bot Main Class to interface with Discord
 '''
 
 import discord
-import time
+import datetime
 from .commands import add_commands
 from .commands.sink import BufferSink
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -53,12 +53,12 @@ class DiscordBot(discord.Client):
             'date',
             run_date=datetime.datetime.now()+datetime.timedelta(seconds=3),
             args=[message.channel],
-            kwargs={"gen_message":True},
+            kwargs={"gen_message":True,"user":user,"content":content},
             id='message_wait_response',
             replace_existing=True
         )
 
-    async def send_message(self, channel: discord.abc.GuildChannel, message: str = None, gen_message: bool = False):
+    async def send_message(self, channel: discord.abc.GuildChannel, message: str = None, gen_message: bool = False, user: str = None, content: str = None):
         if gen_message:
             await channel.typing()
             message, _ = self.jaison.get_response_from_text(
