@@ -4,10 +4,12 @@ load_dotenv()
 from utils.args import args
 from utils.jaison import JAIson
 from utils.discord import DiscordBot
+from utils.signal import GracefulKiller
 from webui import start_ui
 from threading import Thread
 
 jaison_main = JAIson(init_config_file=args.config)
+kill_handler = GracefulKiller(jaison_main)
 
 # For Discord Bot
 discord_bot = DiscordBot(jaison_main)

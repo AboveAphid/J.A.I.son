@@ -21,7 +21,10 @@ Flask==3.1.0
 flask-socketio==5.4.1
 flask-cors==5.0.0
 requests==2.32.3
+pyyaml==6.0.2
+jaison-grpc==1.1.4
+grpcio==1.68.1
 
 
 # YOU WILL NEED TO FOLLOW INSTRUCTIONS IN README FOR WINDOWS INSTALL
-unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+# unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
