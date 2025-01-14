@@ -61,7 +61,7 @@ class DiscordBot(discord.Client):
     async def send_message(self, channel: discord.abc.GuildChannel, message: str = None, gen_message: bool = False, user: str = None, content: str = None):
         if gen_message:
             await channel.typing()
-            message, _ = self.jaison.get_response_from_text(
+            message, _ = await self.jaison.get_response_from_text(
                 user,
                 content,
                 include_audio=False,
@@ -83,7 +83,7 @@ class DiscordBot(discord.Client):
                 return
                 
             logger.debug(f"Getting response from input audio...")
-            text_result, audio_result = self.jaison.get_response_from_audio(
+            text_result, audio_result = await self.jaison.get_response_from_audio(
                 user,
                 self.jaison.config.RESULT_INPUT_SPEECH,
                 time=sink.get_user_time(user),
